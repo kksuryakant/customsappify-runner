@@ -1,0 +1,66 @@
+# sign-runner.yml — build + SignPath-sign the runner on `runner-v*` tags.
+#
+# SignPath Foundation (free OSS code signing, Sectigo certificate → trusted by
+# Windows Smart App Control). Setup:
+#   1. This repo must be public + MIT + actively maintained (SignPath
+#      eligibility).
+#   2. Apply at https://signpath.org (repository link, license, docs).
+#   3. After approval, create a SignPath API token and add repo secrets:
+#        SIGNPATH_API_TOKEN
+#   4. Push a tag:  git tag runner-v1.0.17 && git push origin runner-v1.0.17
+#   5. Download the signed artifact from the workflow run and publish to
+#      web/static/runner/ (or attach to the Release).
+#
+# NOTE: replace the placeholder signing step below with SignPath's official
+# GitHub Action / CLI once approved (see SignPath docs for the exact action
+# name and inputs; this file keeps the pipeline ready).
+
+name: Build + sign runner
+
+on:
+  push:
+    tags:
+      - "runner-v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version (e.g. 1.0.17)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compute version
+        id: ver
+        run: |
+          if ("${{ github.event.inputs.version }}") { echo "version=${{ github.event.inputs.version }}" | Out-File -FilePath $env:GITHUB_OUTPUT -Append }
+          else { echo "version=$($env:GITHUB_REF_NAME -replace '^runner-v','')" | Out-File -FilePath $env:GITHUB_OUTPUT -Append }
+
+      - name: Build runner
+        run: |
+          powershell -ExecutionPolicy Bypass -File scripts\build_runner.ps1 -Version ${{ steps.ver.outputs.version }}
+
+      # --- SignPath signing (replace with their official action after approval)
+      - name: Sign with SignPath (placeholder → official action)
+        env:
+          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}
+        run: |
+          Write-Host "SignPath signing will run here once the project is approved."
+          Write-Host "Artifact: web/static/runner/customsappify-runner-${{ steps.ver.outputs.version }}-windows-x86_64.exe"
+
+      - name: Publish artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: customsappify-runner-${{ steps.ver.outputs.version }}
+          path: web/static/runner/customsappify-runner-${{ steps.ver.outputs.version }}-windows-x86_64.exe

@@ -1,0 +1,25 @@
+# Core application runtime
+ttkbootstrap>=1.12,<2.0
+sv-ttk>=2.6,<3.0
+Pillow>=10.2
+pandas>=2.1,<3.0
+openpyxl>=3.1,<4.0
+PyMuPDF>=1.22,<1.27
+python-dotenv>=1.0,<2.0
+
+# Automation workflow dependencies
+selenium>=4.12,<4.15
+webdriver-manager>=4.0,<4.2
+fake-useragent>=1.4,<2.0
+undetected-chromedriver>=3.5,<3.6
+playwright>=1.40
+python-dateutil>=2.8,<3.0
+
+# PDF processing
+pikepdf>=9.0,<11.0
+# Optional second local OCR engine (ONNX, on-host — no cloud/AI). Used when present.
+rapidocr-onnxruntime>=1.3
+
+# Encryption
+cryptography>=41.0,<43.0
+bcrypt>=4.0,<5.0
