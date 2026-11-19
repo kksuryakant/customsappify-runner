@@ -27,10 +27,10 @@ param(
 
     [string]$RootDir = "./pki/root",
     [string]$IssuingDir = "./pki/issuing",
-    [string]$SubjectRoot = "O=Nyixo, CN=Nyixo Root CA",
-    [string]$SubjectIssuing = "O=Nyixo, CN=Nyixo Code Signing CA",
+    [string]$SubjectRoot = "CN=CustomsAppify Root CA",
+    [string]$SubjectIssuing = "CN=CustomsAppify Code Signing CA",
     [string]$CaDir = "./pki/issuing",
-    [string]$Subject = "O=Nyixo, CN=CustomsAppify Runner",
+    [string]$Subject = "CN=CustomsAppify Runner",
     [string]$OutPfx = "",
     [string]$Password = "change-me",
     [string]$File = "",

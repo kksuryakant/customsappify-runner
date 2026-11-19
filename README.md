@@ -1,7 +1,6 @@
 # CustomsAppify Runner
 
-Open-source local automation runner for the CustomsAppify web platform
-(https://customsappify.nyixo.com).
+Open-source local automation runner for the CustomsAppify web platform.
 
 The runner connects to the CustomsAppify server over WebSocket, receives
 automation jobs, executes them locally with Selenium/Chrome, streams logs and
@@ -45,9 +44,9 @@ Or with osslsigncode: `osslsigncode verify -in file.exe`.
 ## Run
 
 ```powershell
-.\customsappify-runner.exe --server https://customsappify.nyixo.com --token <RUNNER_TOKEN>
+.\customsappify-runner.exe --server <SERVER_URL> --token <RUNNER_TOKEN>
 ```
 
 ## License
 
-MIT — see LICENSE. Copyright (c) 2026 Nyixo.
+MIT — see LICENSE. Copyright (c) 2026 CustomsAppify contributors.

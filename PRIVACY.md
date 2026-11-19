@@ -3,8 +3,7 @@
 Last updated: 2026-11-19
 
 CustomsAppify Runner is an open-source local client for the CustomsAppify web
-platform (https://customsappify.nyixo.com). This policy describes what the
-runner itself does with data.
+platform. This policy describes what the runner itself does with data.
 
 ## What the runner does
 
@@ -20,8 +19,9 @@ runner itself does with data.
 - The runner token you supply, the machine name, and a machine identifier
   (used to register with the server).
 - Job logs and output artifacts, sent only to the server you configured.
-- No telemetry, analytics, or usage statistics are sent to Nyixo or any third
-  party by the runner itself. The runner contains no tracking SDKs.
+- No telemetry, analytics, or usage statistics are sent to the project
+  maintainers or any third party by the runner itself. The runner contains no
+  tracking SDKs.
 
 ## Data the runner does NOT collect
 
@@ -35,12 +35,11 @@ runner itself does with data.
 - You choose which server and token the runner uses. You may stop the runner at
   any time.
 - Job data and artifacts are governed by the privacy policy and terms of the
-  server you connect to (for Nyixo's service, see
-  https://customsappify.nyixo.com).
+  server you connect to.
 
 ## Contact
 
-Questions about this policy: legal@nyixo.com.
+Questions about this policy: open an issue in this repository.
 
 ## License
 
